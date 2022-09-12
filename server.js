@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { connect } = require("./config/dbConfig");
+const MemoryStore = require("memorystore")(session);
+
 const app = express();
 
 connect();
@@ -14,6 +16,10 @@ app.use(
     secret: "expressSessionForAssessment2022",
     resave: true,
     saveUninitialized: false,
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000,
+    }),
   })
 );
 
