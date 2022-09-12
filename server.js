@@ -1,6 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose");
 require("dotenv").config();
+const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { connect } = require("./config/dbConfig");
@@ -11,7 +11,7 @@ app.use(cookieParser("ThisIsTheStringToParseTheCookies"));
 app.use(
   session({
     name: "newSession",
-    secret: process.env.SESSION_KEY,
+    secret: "expressSessionForAssessment2022",
     resave: true,
     saveUninitialized: false,
   })
@@ -21,7 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.end("Hello World");
+  res.send("Hello World");
+  res.end();
 });
 
 app.use("/auth", require("./routes/authRoute"));
