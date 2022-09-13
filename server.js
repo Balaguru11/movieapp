@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Home");
+  res.send("Thank you for the opportunity. ");
   res.end();
 });
 
