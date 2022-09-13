@@ -26,8 +26,13 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Home");
+  res.end();
+});
+
 app.get("/test", (req, res) => {
-  res.send("Hello World");
+  res.send("Test Page");
   res.end();
 });
 
